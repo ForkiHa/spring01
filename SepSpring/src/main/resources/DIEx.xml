@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<context:annotation-config/>
+<!-- 애노테이션사용하기위한 태그 -->
+<context:component-scan base-package="spring.anno"></context:component-scan>
+
+
+<bean id="baz" class="spring.DI.Baz"/>
+<bean id="bar" class="spring.DI.Bar"/>
+
+<bean id="foo" class="spring.DI.Foo" autowire="byName" scope="singleton" init-method="start" destroy-method="stop">
+
+	<!-- <property name="baz"><ref bean="baz"/></property>
+	<property name="bar" ref="bar"/> -->
+	<property name="str" value="안녕"/>
+	<property name="i"><value type="int">5</value></property>
+</bean> 
+<!-- <bean id="foo1" class="spring.DI.Foo" p:baz-ref="baz" p:bar-ref="bar" p:str="helele" p:i="10"/> 
+<bean id="foo1" class="spring.DI.Foo" p:bar-ref="bar" p:str="helele" p:i="10" > 
+<property name="baz"><bean class="spring.DI.Baz"/></property>
+</bean>
+<bean id="foo2" class="spring.DI.Foo" p:baz-ref="baz">
+<lookup-method name="getBar" bean="bar"/>
+
+</bean> -->
+<bean id="foo1" autowire="byName" class="spring.DI.Foo" p:str="helele" p:i="10"/>
+</beans>

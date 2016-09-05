@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+		 
+		 <bean id="articleDao" class="spring.chap01.MySQLArticleDao"/>
+		 <bean id="WriteArticleService" class="spring.chap01.WriteArticleServiceImpl" p:articleDao-ref="articleDao"/>
+		
+			
+		
+		<!-- <bean name="WriteArticleService" class="spring.chap01.WriteArticleServiceImpl">
+			<constructor-arg>
+				<ref bean="articleDao"/>
+				생성자의 첫번째 매개변수에 articleDao라는애를 넣어준다
+				spring.chap01.MySQLArticleDao객체를 매개변수로 넣어줌
+			</constructor-arg>
+		</bean>
+		
+		<bean name="articleDao" class="spring.chap01.MySQLArticleDao">
+		</bean>
+		
+		<bean id="Baz" class="spring.DI.Baz"/>
+		매개변수가 없는 기본생성자로 객체생성
+		<bean id="Bar" class="spring.DI.Bar"/>
+		
+		<bean id="Foo" class="spring.DI.Foo">
+			<constructor-arg>
+				<ref bean="Bar"/>
+			</constructor-arg>
+			<constructor-arg>
+				<ref bean="Baz"/>
+			</constructor-arg>
+		</bean>
+		매개변수가 순서대로되어있는(Bar,Baz) 생성자 찾아감
+		
+		<bean id="fooVa" class="spring.DI.Foo">
+			<constructor-arg>
+				<value> Hi!</value>
+			</constructor-arg>
+			<constructor-arg>
+				<value> 10</value>
+			</constructor-arg>
+		</bean> -->
+		<!-- 인덱스를 지정해주지 않으면 순서대로  (String, int) 타입지정해주지않으면 String-->
+		</beans>

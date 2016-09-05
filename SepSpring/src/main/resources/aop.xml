@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+		
+	<context:component-scan base-package="spring.aop"/>
+	<context:annotation-config/>
+	<aop:aspectj-autoproxy/>
+	<aop:config proxy-target-class="true" />	
+
+	<!-- <bean id="greetingTarget" class="spring.aop.GreetingServiceImpl">
+	<property name="greeting">
+	<value>Hello</value>
+	</property>
+	</bean> 
+	
+	<bean id="logAspect" class="spring.aop.LogAspect"/>
+	<bean id="performanceAspect" class="spring.aop.PerformanceAspect"/>
+	
+	<aop:config proxy-target-class="true" >
+	proxy-target-class="true" aop적용시키겠다 기본값이 true(안써도 무방) 
+	<aop:pointcut expression="execution(public * *(..))" id="publicMethod"/>
+	execution(public * *(..)) : public 메서드에 (매개변수 관계없음)
+	
+	<aop:aspect ref="logAspect">
+		<aop:before method="beforeLogging" pointcut-ref="publicMethod"/>
+		<aop:before method="beforeLogging" pointcut-ref="execution(public * *(..))"/>
+	
+		<aop:after-returning method="afterLogging" pointcut-ref="publicMethod"
+		returning="returnValue"/>
+		returning 변수명과 일치
+		<aop:after-throwing method="throwingLogging" pointcut-ref="publicMethod" 
+		throwing="ex"/>
+		throwing 변수명과 일치
+		<aop:after method="alwaysLogging" pointcut-ref="publicMethod"/>
+	</aop:aspect>
+	
+	<aop:aspect ref="performanceAspect">
+		<aop:around method="timeCheck" pointcut-ref="publicMethod"/>
+		execution(public * spring.aop..*sayHello*(..))
+		around메서드가 after-throwing처리전에 예외처리먼저 적용
+	</aop:aspect>
+	
+	</aop:config> -->
+	
+</beans>

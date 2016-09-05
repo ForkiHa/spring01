@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myMem">
+
+	<insert id="insert" parameterType="spring.jdbc.User">
+	insert into mem values(#{memberid},#{password},#{name},#{email})
+	</insert>
+	
+	<update id="updateMem" parameterType="HashMap">
+	update mem set name=#{name} where memberid=#{id}
+	</update>
+	
+	<delete id="deleteMem" parameterType="String">
+	delete from mem where memberid=#{id}
+	</delete>
+	
+	<select id="selectAll" resultType="spring.jdbc.User">
+	select * from mem
+	</select>
+	
+	<select id="selectOne" parameterType="String" resultType="spring.jdbc.User">
+	select * from mem where memberid=#{id}
+	</select>
+	
+	<select id="selectCount" resultType="int">
+	select count(*) from mem
+	</select>
+	
+	
+</mapper>
